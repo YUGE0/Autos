@@ -36,27 +36,27 @@ export default async function Page({params}: Props) {
         <h1 className="text-5xl font-medium uppercase">{product.cname}</h1>
       </div>
       <div className=" bg-cover bg-no-repeat bg-clip-text bg-fixed bg-center" style={{backgroundImage: `url(${bgurl})`}}>
-        <h1 className="py-10 font-black text-Fcolor text-center text-[1780%] text-opacity-30 uppercase">{product.model}</h1>
+        <h1 className="py-10 font-black text-Fcolor text-center leading-loose xl:text-[1780%] md:text-[750%] sm:text-[680%] text-[380%] text-opacity-30 uppercase">{product.model}</h1>
       </div>
       <div>
-        <h1 className="px-24 py-2 text-5xl font-bold">EXTERIOR</h1>
-        <div className="flex w-full justify-center">
-          <Image className="w-fit relative" style={{objectFit:"cover"}} width={820} height={0} alt={product.model} src={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${product.imgb}`}/>
-          <Image className="w-fit relative" style={{objectFit:"cover"}} width={820} height={0} alt={product.model} src={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${product.imgf}`}/>
+        <h1 className="xl:ml-44 md:ml-16 py-2 text-5xl font-bold">EXTERIOR</h1>
+        <div className="flex flex-wrap w-full justify-center">
+          <Image className="w-fit" style={{objectFit:"cover"}} width={700} height={500} alt={product.model} src={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${product.imgf}`}/>
+          <Image className="w-fit" style={{objectFit:"cover"}} width={700} height={500} alt={product.model} src={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${product.imgb}`}/>
         </div>
         <div className="py-10 flex justify-around">
-          <div className="p-5 rounded-lg shadow-Tcolor"><h1 className="font-semibold text-xl">Top speed</h1><h1 className="text-[10rem] font-medium">{product.speed}</h1></div>
-          <div className="p-5 rounded-lg shadow-Tcolor"><h1 className="font-semibold text-xl">Power</h1><h1 className="text-[10rem] font-medium">{product.power}</h1></div>
-          <div className="p-5 rounded-lg shadow-Tcolor"><h1 className="font-semibold text-xl">0-100 KM/h</h1><h1 className="text-[10rem] font-medium">{product.time}</h1></div>
+          <div className="p-5 rounded-lg shadow-Tcolor"><h1 className="font-semibold text-sm md:text-xl">Top speed</h1> <h1 className="xl:text-[10rem] md:text-8xl text-6xl font-medium">{product.speed}</h1></div>
+          <div className="p-5 rounded-lg shadow-Tcolor"><h1 className="font-semibold text-sm md:text-xl">Power</h1>     <h1 className="xl:text-[10rem] md:text-8xl text-6xl font-medium">{product.power}</h1></div>
+          <div className="p-5 rounded-lg shadow-Tcolor"><h1 className="font-semibold text-sm md:text-xl ordinal">0-100KM/h</h1><h1 className="xl:text-[10rem] md:text-8xl text-6xl font-medium">{product.time}</h1></div>
         </div>
-        <h1 className="px-24 py-2 text-5xl font-bold text-right">INTERIOR</h1>
-        <div className="flex w-full justify-center p-5">
-          <Image className="w-fit" width={820} height={0} alt={product.model} style={{objectFit: "cover"}} src={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${product.imginb}`}/>
-          <Image className="w-fit" width={820} height={0} alt={product.model} style={{objectFit: "cover"}} src={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${product.imginf}`}/>
+        <h1 className="xl:mr-44 md:mr-16 py-2 text-5xl font-bold text-right">INTERIOR</h1>
+        <div className="flex flex-wrap w-full justify-center">
+          <Image className="w-fit" width={700} height={0} alt={product.model} style={{objectFit: "cover"}} src={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${product.imginb}`}/>
+          <Image className="w-fit" width={700} height={0} alt={product.model} style={{objectFit: "cover"}} src={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${product.imginf}`}/>
         </div>
-        <div className="p-20 w-full space-y-20">
-          <div className="flex flex-wrap justify-between p-2"><h1 className="pr-10 text-6xl font-semibold">OVERVIEW</h1><h1 className="w-[75%] text-xl text-balance">{product.overview}</h1></div>
-          <div className="flex flex-wrap justify-between p-2"><h1 className="w-[65%] text-xl text-balance">{product.description}</h1><h1 className="pr-10 text-6xl font-semibold">SPECIAL FEATURES</h1></div>
+        <div className="p-40 w-full space-y-12">
+          <div className="p-2"><h1 className="pr-10 text-6xl font-semibold">OVERVIEW</h1>   <h1 className="w-[75%] text-xl text-balance">{product.overview}</h1></div>
+          <div className="p-2"><h1 className="pr-10 text-6xl font-semibold">SPECIAL FEATURES</h1><h1 className="w-[65%] text-xl text-balance">{product.description}</h1></div>
         </div>
         <div className="bg-contain bg-no-repeat bg-fixed bg-center" style={{backgroundImage: `url(${bgurl})`}}>
           <h1 className="py-10 font-black text-Fcolor text-center text-[25rem] text-opacity-0 uppercase">{product.price}</h1>
