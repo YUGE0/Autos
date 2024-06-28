@@ -2,6 +2,7 @@ import { createClient } from '@/supabase/client';
 import { url } from 'inspector';
 import Image from 'next/image';
 import React from 'react'
+import Features from './features';
 
 export const revalidate = 0;
 
@@ -10,6 +11,8 @@ type Props = {
 }
 
 export async function generateStaticParams() {
+
+
   const supabase = createClient();
   const { data:product, error } = await supabase.from("autos").select()
 
@@ -56,8 +59,11 @@ export default async function Page({params}: Props) {
         </div>
         <div className="p-40 w-full space-y-12">
           <div className="p-2"><h1 className="pr-10 text-6xl font-semibold">OVERVIEW</h1>   <h1 className="w-[75%] text-xl text-balance">{product.overview}</h1></div>
-          <div className="p-2"><h1 className="pr-10 text-6xl font-semibold">SPECIAL FEATURES</h1><h1 className="w-[65%] text-xl text-balance">{product.description}</h1></div>
+          <div className="p-2"><h1 className="pr-10 text-6xl font-semibold">FEATURES</h1>
+            <Features />
+          </div>
         </div>
+        {product.sound && <div>hear sound</div>}
         <div className="bg-contain bg-no-repeat bg-fixed bg-center" style={{backgroundImage: `url(${bgurl})`}}>
           <h1 className="py-10 font-black text-Fcolor text-center text-[25rem] text-opacity-0 uppercase">{product.price}</h1>
         </div>
