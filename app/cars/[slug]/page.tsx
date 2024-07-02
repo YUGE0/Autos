@@ -58,7 +58,7 @@ export default async function Page({params}: Props) {
           <Image className="w-fit" width={700} height={0} alt={product.model} style={{objectFit: "cover"}} src={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${product.imginf}`}/>
         </div>
         <div className="p-40 w-full space-y-12">
-          <div className="p-2"><h1 className="pr-10 text-6xl font-semibold">OVERVIEW</h1>   <h1 className="w-[75%] text-xl text-balance">{product.overview}</h1></div>
+          <div className="p-2"><h1 className="pr-10 text-6xl font-semibold">OVERVIEW</h1><h1 className="w-[75%] text-xl text-balance">{product.overview}</h1></div>
           <div className="p-2"><h1 className="pr-10 text-6xl font-semibold">FEATURES</h1>
             <Features />
           </div>
