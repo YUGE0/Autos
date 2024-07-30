@@ -29,8 +29,7 @@ export default async function Page({params}: Props) {
 
   const supabase = createClient();
   const { data:product } = await supabase.from("autos").select().match({id: params.slug}).single()
-  const bgurl = `${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${product.imgs}`
-  //console.log(product)
+  const bgurl =`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${product.imgs}`;
 
   return (
     <div className="">
@@ -39,7 +38,7 @@ export default async function Page({params}: Props) {
         <h1 className="text-5xl font-medium uppercase">{product.cname}</h1>
       </div>
       <div className=" bg-cover bg-no-repeat bg-clip-text bg-fixed bg-center" style={{backgroundImage: `url(${bgurl})`}}>
-        <h1 className="py-10 font-black text-Fcolor text-center leading-loose xl:text-[1780%] md:text-[750%] sm:text-[680%] text-[380%] text-opacity-30 uppercase">{product.model}</h1>
+        <h1 className="py-10 font-black text-Fcolor text-center leading-loose xl:text-[1780%] md:text-[1050%] sm:text-[880%] text-[580%] text-opacity-30 uppercase">{product.model}</h1>
       </div>
       <div>
         <h1 className="xl:ml-44 md:ml-16 py-2 text-5xl font-bold">EXTERIOR</h1>
@@ -57,14 +56,15 @@ export default async function Page({params}: Props) {
           <Image className="w-fit" width={700} height={0} alt={product.model} style={{objectFit: "cover"}} src={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${product.imginb}`}/>
           <Image className="w-fit" width={700} height={0} alt={product.model} style={{objectFit: "cover"}} src={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${product.imginf}`}/>
         </div>
-        <div className="p-40 w-full space-y-12">
+        <div className="p-10 sm:p-20 md:p-40  w-full space-y-12">
           <div className="p-2"><h1 className="pr-10 text-6xl font-semibold">OVERVIEW</h1><h1 className="mt-10 text-xl text-balance">{product.overview}</h1></div>
-          <div className="p-2"><h1 className="pr-10 text-6xl font-semibold">FEATURES</h1>
-            <Features />
+          <div className="p-2 flex flex-wrap items-baseline "><h1 className="pr-10 text-6xl font-semibold">FEATURES</h1><Features />
           </div>
         </div>
+        <div className="p-10">
         {product.sound && <SoudPlayer />}
-        <div className="bg-contain bg-no-repeat bg-fixed bg-center" style={{backgroundImage: `url(${bgurl})`}}>
+        </div>
+        <div className="bg-cover bg-no-repeat bg-fixed bg-center" style={{backgroundImage: `url(${bgurl})`}}>
           <h1 className="py-10 font-black text-Fcolor text-center text-[25rem] text-opacity-0 uppercase">{product.price}</h1>
         </div>
       </div>

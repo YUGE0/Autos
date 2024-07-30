@@ -19,7 +19,7 @@ export default function Card(prop:
     return(
         <Link className="hover:shadow-xl hover:shadow-Fcolor rounded-xl" href={`/cars/${prop.id}`}>
         <div key={prop.id} className="w-96">
-            <div className="h-64 p-10 relative"><Image className="rounded-t-xl" style={{objectFit: "cover"}} layout="fill" src={prop.url} alt="Image"/></div>
+            <div className="h-64 p-10 relative"><Image className="rounded-t-xl" style={{objectFit: "cover"}} fill src={prop.url} alt="Image"/></div>
             <div className="rounded-b-xl shadow-md shadow-Scolor w-full p-4 ">
                 <div className="flex justify-between pb-4 items-start hover:animate-pulse">
                     <Image className="w-8 relative" width={0} height={0} alt="Revolto" style={{objectFit: "cover"}} src={prop.logo}/>
