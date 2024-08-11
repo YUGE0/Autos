@@ -34,11 +34,11 @@ export default async function Page({params}: Props) {
   return (
     <div className="">
       <div className="p-10 flex justify-between items-center">
-        <Image className="relative w-20" width={100} height={0} alt={product.cname} style={{objectFit: "cover"}} src={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${product.logo}`}/>
-        <h1 className="text-5xl font-medium uppercase">{product.cname}</h1>
+        <Image className="relative w-10 sm:w-20" width={100} height={0} alt={product.cname} style={{objectFit: "cover"}} src={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${product.logo}`}/>
+        <h1 className="text-4xl sm:text-5xl font-medium uppercase">{product.cname}</h1>
       </div>
-      <div className=" bg-cover bg-no-repeat bg-clip-text bg-fixed bg-center" style={{backgroundImage: `url(${bgurl})`}}>
-        <h1 className="py-10 font-black text-Fcolor text-center leading-loose xl:text-[1780%] md:text-[1050%] sm:text-[880%] text-[580%] text-opacity-30 uppercase">{product.model}</h1>
+      <div className=" bg-contain bg-no-repeat bg-clip-text bg-fixed bg-center" style={{backgroundImage: `url(${bgurl})`}}>
+        <h1 className="py-10 font-black text-Fcolor text-center leading-loose xl:text-[1780%] md:text-[1050%] sm:text-[880%] text-[400%] text-opacity-30 uppercase">{product.model}</h1>
       </div>
       <div>
         <h1 className="xl:ml-44 md:ml-16 py-2 text-5xl font-bold">EXTERIOR</h1>
@@ -64,8 +64,8 @@ export default async function Page({params}: Props) {
         <div className="p-10">
         {product.sound && <SoudPlayer />}
         </div>
-        <div className="bg-cover bg-no-repeat bg-fixed bg-center" style={{backgroundImage: `url(${bgurl})`}}>
-          <h1 className="py-10 font-black text-Fcolor text-center text-[25rem] text-opacity-0 uppercase">{product.price}</h1>
+        <div className="bg-contain bg-no-repeat bg-fixed bg-center " style={{backgroundImage: `url(${bgurl})`}}>
+          <h1 className="font-black text-center text-[16rem] text-transparent uppercase">{product.price}</h1>
         </div>
       </div>
   </div>
