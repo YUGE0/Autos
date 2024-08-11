@@ -37,23 +37,22 @@ export default async function Home() {
 
   if(!product){return(notFound())}
   // if(!topproduct){return<p>Not Found</p>}
-
   //console.log({product})
 
   return (
-    <main className="min-h-screen items-center justify-between p-20">
-      <div className="w-full flex flex-wrap justify-around">
-        <div className="p-10">
-          <h1 className="text-3xl font-bold">TOP SELLERS</h1>
-          <p>This are the top sellers</p>
+    <main className="min-h-screen items-center justify-between p-10 xl:p-20">
+      <div className="w-full flex flex-wrap justify-between">
+        <div className="p-10 items-center">
+          <h1 className="text-4xl md:text-5xl font-bold">TOP SELLERS</h1>
+          <p className="text-xl">This are the top sellers</p>
         </div>
         <div className="flex flex-wrap justify-center gap-8">  
           {topproduct && topproduct.map((pro) => (<Card key={`${pro.id}`} {...pro} url={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${pro.url}`}/>))} 
         </div>
       </div>
-      <div className="m-10">
+      <div className="mt-10">
         <div>
-          <h1 className=" uppercase text-4xl font-semibold">All Products</h1>
+          <h1 className="uppercase text-4xl font-semibold">All Products</h1>
         </div>
         <div className="flex flex-wrap justify-around gap-8 mt-10"> 
           {product.map((pro) => (<Card key={`${pro.id}`} {...pro} url={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${pro.url}`}/>))} 

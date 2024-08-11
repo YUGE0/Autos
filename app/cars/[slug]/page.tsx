@@ -58,8 +58,8 @@ export default async function Page({params}: Props) {
         </div>
         <div className="p-10 sm:p-20 md:p-40  w-full space-y-12">
           <div className="p-2"><h1 className="pr-10 text-6xl font-semibold">OVERVIEW</h1><h1 className="mt-10 text-xl text-balance">{product.overview}</h1></div>
-          <div className="p-2 flex flex-wrap items-baseline "><h1 className="pr-10 text-6xl font-semibold">FEATURES</h1><Features />
-          </div>
+          <h1 className="text-6xl font-semibold">FEATURES</h1>
+          <Features />
         </div>
         <div className="p-10">
         {product.sound && <SoudPlayer />}

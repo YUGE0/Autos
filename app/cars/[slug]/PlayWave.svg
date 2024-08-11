@@ -1,5 +1,5 @@
 <svg width="414" height="60" viewBox="0 0 414 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M221.28 27.3775L208.453 20.2517C208.156 20.0866 207.822 20 207.482 20L194.5 20C193.597 20 193.157 21.1016 193.81 21.7241L200.219 27.8276C201.46 29.0099 201.46 30.9901 200.219 32.1724L193.81 38.2759C193.157 38.8984 193.597 40 194.5 40L208 40L221.28 32.6225C223.337 31.4795 223.337 28.5205 221.28 27.3775Z" stroke="black" stroke-width="2" stroke-linecap="round"/>
+<path class="hover:shadow-xl hover:shadow-black/60" d="M221.28 27.3775L208.453 20.2517C208.156 20.0866 207.822 20 207.482 20L194.5 20C193.597 20 193.157 21.1016 193.81 21.7241L200.219 27.8276C201.46 29.0099 201.46 30.9901 200.219 32.1724L193.81 38.2759C193.157 38.8984 193.597 40 194.5 40L208 40L221.28 32.6225C223.337 31.4795 223.337 28.5205 221.28 27.3775Z" stroke="black" stroke-width="2" stroke-linecap="round"/>
 <path d="M142 14L142 46" stroke="black" stroke-width="3" stroke-linecap="round"/>
 <path d="M232 14L232 46" stroke="black" stroke-width="3" stroke-linecap="round"/>
 <path d="M312 14L312 46" stroke="black" stroke-width="3" stroke-linecap="round"/>
