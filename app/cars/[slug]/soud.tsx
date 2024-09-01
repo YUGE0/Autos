@@ -23,9 +23,9 @@ export default function SoudPlayer() {
   //const toggleMute = () => setIsMuted(!isMuted);
   //<button onClick={toggleMute}>{isMuted ? 'Unmute' : 'Mute'}</button>
   return (
-    <div className="flex justify-center">
-      {isPlaying===false && <Image alt='Sound' src={playwave} width={800} height={100} onClick={handlePlay}/>}
-      {isPlaying===true && <Image alt='Sound' src={pausewave} width={800} height={100} onClick={handlePause}/>}     
+    <div className="flex flex-wrap justify-around">
+      <h1 className="text-5xl font-semibold p-2">FEEL THE ENGINE</h1>
+      {isPlaying===false ? <Image alt='Sound' src={playwave} width={500} height={100} onClick={handlePlay}/> : <Image alt='Sound' src={pausewave} width={500} height={100} onClick={handlePause}/>}     
       <audio src={sound} muted={isMuted}/>
     </div>
   );

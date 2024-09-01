@@ -29,6 +29,10 @@ export default async function Page({params}: Props) {
 
   const supabase = createClient();
   const { data:product } = await supabase.from("autos").select().match({id: params.slug}).single()
+  const { data:aero } = await supabase.from("aero").select().match({model: product.model}).single()
+  const { data:per } = await supabase.from("per").select().match({model: product.model}).single()
+  //console.log(per);
+  
   const bgurl =`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${product.imgs}`;
 
   return (
@@ -37,35 +41,39 @@ export default async function Page({params}: Props) {
         <Image className="relative w-10 sm:w-20" width={100} height={0} alt={product.cname} style={{objectFit: "cover"}} src={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${product.logo}`}/>
         <h1 className="text-4xl sm:text-5xl font-medium uppercase">{product.cname}</h1>
       </div>
-      <div className=" bg-contain bg-no-repeat bg-clip-text bg-fixed bg-center" style={{backgroundImage: `url(${bgurl})`}}>
+      <div className=" bg-cover bg-no-repeat bg-clip-text bg-fixed bg-center" style={{backgroundImage: `url(${bgurl})`}}>
         <h1 className="py-10 font-black text-Fcolor text-center leading-loose xl:text-[1780%] md:text-[1050%] sm:text-[880%] text-[400%] text-opacity-30 uppercase">{product.model}</h1>
       </div>
-      <div>
-        <h1 className="xl:ml-44 md:ml-16 py-2 text-5xl font-bold">EXTERIOR</h1>
+      <div className="p-1 sm:p-0">
+        <h1 className="xl:ml-44 md:ml-16 py-1 text-3xl sm:text-5xl font-bold">EXTERIOR</h1>
         <div className="flex flex-wrap w-full justify-center">
-          <Image className="w-fit" style={{objectFit:"cover"}} width={700} height={500} alt={product.model} src={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${product.imgf}`}/>
-          <Image className="w-fit" style={{objectFit:"cover"}} width={700} height={500} alt={product.model} src={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${product.imgb}`}/>
+          <Image className="w-fit" style={{objectFit:"cover"}} width={700} height={0} alt={product.model} src={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${product.imgf}`}/>
+          <Image className="w-fit" style={{objectFit:"cover"}} width={700} height={0} alt={product.model} src={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${product.imgb}`}/>
         </div>
-        <div className="py-10 flex justify-around">
+        <div className="py-10 flex flex-wrap sm:flex-nowrap justify-around">
           <div className="p-5 rounded-lg shadow-Tcolor"><h1 className="font-semibold text-sm md:text-xl">Top speed</h1> <h1 className="xl:text-[10rem] md:text-8xl text-6xl font-medium">{product.speed}</h1></div>
           <div className="p-5 rounded-lg shadow-Tcolor"><h1 className="font-semibold text-sm md:text-xl">Power</h1>     <h1 className="xl:text-[10rem] md:text-8xl text-6xl font-medium">{product.power}</h1></div>
           <div className="p-5 rounded-lg shadow-Tcolor"><h1 className="font-semibold text-sm md:text-xl ordinal">0-100KM/h</h1><h1 className="xl:text-[10rem] md:text-8xl text-6xl font-medium">{product.time}</h1></div>
         </div>
-        <h1 className="xl:mr-44 md:mr-16 py-2 text-5xl font-bold text-right">INTERIOR</h1>
+        <h1 className="xl:mr-44 md:mr-16 py-1 text-3xl sm:text-5xl font-bold text-right">INTERIOR</h1>
         <div className="flex flex-wrap w-full justify-center">
           <Image className="w-fit" width={700} height={0} alt={product.model} style={{objectFit: "cover"}} src={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${product.imginb}`}/>
           <Image className="w-fit" width={700} height={0} alt={product.model} style={{objectFit: "cover"}} src={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${product.imginf}`}/>
         </div>
         <div className="p-10 sm:p-20 md:p-40  w-full space-y-12">
-          <div className="p-2"><h1 className="pr-10 text-6xl font-semibold">OVERVIEW</h1><h1 className="mt-10 text-xl text-balance">{product.overview}</h1></div>
+          <div className="p-2"><h1 className="pr-10 text-5xl font-semibold">OVERVIEW</h1><h1 className="mt-10 text-xl text-balance">{product.overview}</h1></div>
           <h1 className="text-6xl font-semibold">FEATURES</h1>
-          <Features />
+          <Features key={aero.id} {...aero} {...per} 
+            aeroimgo={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${aero.aeroimgo}`} 
+            aeroimgt={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${aero.aeroimgt}`} 
+            perimgo={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${per.perimgo}`} 
+            perimgt={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${per.perimgt}`}/>
         </div>
-        <div className="p-10">
+        <div className="p-1 sm:p-10">
         {product.sound && <SoudPlayer />}
         </div>
-        <div className="bg-contain bg-no-repeat bg-fixed bg-center " style={{backgroundImage: `url(${bgurl})`}}>
-          <h1 className="font-black text-center text-[16rem] text-transparent uppercase">{product.price}</h1>
+        <div className="bg-cover bg-no-repeat bg-fixed bg-center " style={{backgroundImage: `url(${bgurl})`}}>
+          <h1 className="font-black text-center text-[28rem] text-transparent uppercase">{product.price}</h1>
         </div>
       </div>
   </div>
