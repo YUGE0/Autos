@@ -40,7 +40,7 @@ export default async function Home() {
   //console.log({product})
 
   return (
-    <main className="min-h-screen items-center justify-between p-10 xl:p-20">
+    <main className="min-h-screen items-center justify-between p-2 sm:p-10 xl:p-20">
       <div className="w-full flex flex-wrap justify-center">
         <div className="p-10 items-center">
           <h1 className="text-4xl md:text-5xl font-bold">TOP SELLERS</h1>
@@ -51,9 +51,7 @@ export default async function Home() {
         </div>
       </div>
       <div className="mt-10">
-        <div>
           <h1 className="uppercase text-4xl font-semibold">All Products</h1>
-        </div>
         <div className="flex flex-wrap justify-around gap-8 mt-10"> 
           {product.map((pro) => (<Card key={`${pro.id}`} {...pro} url={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${pro.url}`}/>))} 
         </div>
