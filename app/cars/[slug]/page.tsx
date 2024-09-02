@@ -63,11 +63,13 @@ export default async function Page({params}: Props) {
         <div className="p-10 sm:p-20 md:p-40  w-full space-y-12">
           <div className="p-2"><h1 className="pr-10 text-5xl font-semibold">OVERVIEW</h1><h1 className="mt-10 text-xl text-balance">{product.overview}</h1></div>
           <h1 className="text-6xl font-semibold">FEATURES</h1>
-          <Features key={aero.id} {...aero} {...per} 
+          {aero!==null? <Features key={aero.id} {...aero} {...per} 
             aeroimgo={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${aero.aeroimgo}`} 
             aeroimgt={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${aero.aeroimgt}`} 
             perimgo={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${per.perimgo}`} 
             perimgt={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${per.perimgt}`}/>
+            :<Features model={''} aeropo={''} aeropt={''} aeroimgo={''} aeroimgt={''} perpo={''} perpt={''} perimgo={''} perimgt={''}/>
+          }
         </div>
         <div className="p-1 sm:p-10">
         {product.sound && <SoudPlayer />}
