@@ -73,7 +73,7 @@ export default async function Page({params}: Props) {
         {product.sound && <SoudPlayer />}
         </div>
         <div className="bg-cover bg-no-repeat bg-fixed bg-center " style={{backgroundImage: `url(${bgurl})`}}>
-          <h1 className="font-black text-center text-[28rem] text-transparent uppercase">{product.price}</h1>
+          <h1 className="font-black text-center h-[40rem] text-[8rem] md:text-[10rem] lg:text-[12rem] text-transparent uppercase">{product.price}</h1>
         </div>
       </div>
   </div>
