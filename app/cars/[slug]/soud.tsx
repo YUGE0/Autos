@@ -4,9 +4,11 @@ import useSound from 'use-sound';
 import playwave from './PlayWave.svg';
 import pausewave from './PauseWave.svg';
 import Image from 'next/image';
+import { log } from 'console';
 
-export default function SoudPlayer() {
-  const [play, { sound }] = useSound("/LB744_Exhaust_MIX8D_230303.mp3");
+export default function SoudPlayer(au:{so:string}) {
+  console.log(au);  
+  const [play, { sound }] = useSound(au.so);
   const [isMuted, setIsMuted] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
 
