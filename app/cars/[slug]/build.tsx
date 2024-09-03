@@ -9,8 +9,6 @@ export default function Build( con:{
   conimgt:string,
 }) 
 { 
-  console.log(con);
-  
   return (
     <div className="mt-5">
       <div className="flex flex-wrap lg:flex-nowrap justify-between items-center pt-10">
@@ -20,10 +18,10 @@ export default function Build( con:{
           <p>{con.conpo}</p>
         </div>
       </div>
-      <div className="flex flex-wrap lg:flex-nowrap justify-between items-center pt-10">
+      {con.conimgt!==null && <div className="flex flex-wrap lg:flex-nowrap justify-between items-center pt-10">
         <h1 className="py-10 px-0 lg:px-10 lg:py-0">{con.conpt}</h1>
-        <Image className="h-96 rounded-xl shadow-lg shadow-black" width={500} height={300} src={con.conimgt} alt="Aero" style={{height: 'auto', width:'auto'}}/>
-      </div>
+        <Image className="h-96 rounded-xl shadow-lg shadow-black" width={500} height={300} src={con.conimgt} alt="" style={{height: 'auto', width:'auto'}}/>
+      </div>}
     </div>
   )
 }

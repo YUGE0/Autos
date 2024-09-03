@@ -32,7 +32,7 @@ export default async function Page({params}: Props) {
   const { data:aero } = await supabase.from("aero").select().match({model: product.model}).single()
   const { data:per } = await supabase.from("per").select().match({model: product.model}).single()
   const { data:con } = await supabase.from("con").select().match({model: product.model}).single()
-  //console.log(per);
+  //console.log(aero);
   
   const bgurl =`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${product.imgs}`;
 
@@ -63,7 +63,7 @@ export default async function Page({params}: Props) {
         </div>
         <div className="p-10 sm:p-20 md:p-40  w-full space-y-12">
           <div className="p-2"><h1 className="pr-10 text-5xl font-semibold">OVERVIEW</h1><h1 className="mt-10 text-xl text-balance">{product.overview}</h1></div>
-          <h1 className="text-6xl font-semibold">FEATURES</h1>
+          {aero!==null && <h1 className="text-6xl font-semibold">FEATURES</h1>}
           {aero!==null? <Features key={aero.id} {...aero} {...per} {...con}
             aeroimgo={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${aero.aeroimgo}`} 
             aeroimgt={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${aero.aeroimgt}`} 
@@ -71,14 +71,13 @@ export default async function Page({params}: Props) {
             perimgt={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${per.perimgt}`}
             conimgo={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${con.conimgo}`} 
             conimgt={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${con.conimgt}`}/>
-            :<Features model={''} aeropo={''} aeropt={''} aeroimgo={''} aeroimgt={''} perpo={''} perpt={''} perimgo={''} perimgt={''} conpo={''} conpt={''} conimgo={''} conimgt={''}/>
-          }
+            :null}
         </div>
         <div className="p-1 sm:p-10">
         {product.sound && <SoudPlayer so={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${product.sound}`}/>}
         </div>
         <div className="bg-cover bg-no-repeat bg-fixed bg-center " style={{backgroundImage: `url(${bgurl})`}}>
-          <h1 className="font-black text-center h-[40rem] text-[8rem] md:text-[10rem] lg:text-[12rem] text-transparent uppercase">{product.price}</h1>
+          <h1 className="font-black text-center h-[40rem] text-[8rem] md:text-[10rem] lg:text-[12rem] text-transparent uppercase">{product.model}</h1>
         </div>
       </div>
   </div>
