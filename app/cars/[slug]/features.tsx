@@ -22,7 +22,7 @@ export default function Features(feature: {
   conimgt:string,
 }) 
 {
-    const [features, setFeatures] = useState("");
+    const [features, setFeatures] = useState("Aerodynamics");
     //console.log("Logging here: "+feature.perimgo);
     
   return (

@@ -52,7 +52,7 @@ export default async function Home() {
       </div>
       <div className="mt-10">
           <h1 className="uppercase text-4xl font-semibold">All Products</h1>
-        <div className="flex flex-wrap justify-around gap-8 mt-10"> 
+        <div className="flex flex-wrap gap-8 mt-10"> 
           {product.map((pro) => (<Card key={`${pro.id}`} {...pro} url={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${pro.url}`}/>))} 
         </div>
       </div>
