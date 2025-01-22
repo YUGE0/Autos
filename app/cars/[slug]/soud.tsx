@@ -4,11 +4,9 @@ import useSound from 'use-sound';
 import playwave from './PlayWave.svg';
 import pausewave from './PauseWave.svg';
 import Image from 'next/image';
-import { log } from 'console';
 
 export default function SoudPlayer(au:{so:string}) {  
   const [play, { sound }] = useSound(au.so);
-  const [isMuted, setIsMuted] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
 
   const handlePlay = () => {
@@ -27,7 +25,7 @@ export default function SoudPlayer(au:{so:string}) {
     <div className="flex flex-wrap justify-around">
       <h1 className="text-5xl font-semibold p-2">FEEL THE ENGINE</h1>
       {isPlaying===false ? <Image alt='Sound' src={playwave} width={500} height={100} onClick={handlePlay}/> : <Image alt='Sound' src={pausewave} width={500} height={100} onClick={handlePause}/>}     
-      <audio src={sound} muted={isMuted}/>
+      <audio src={sound}/>
     </div>
   );
 }
