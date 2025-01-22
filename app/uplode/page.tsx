@@ -1,6 +1,6 @@
 "use client";
 
-import { sellCarAction } from "@/actions";
+import { sellCarAction } from "@/actions/index";
 import React from "react";
 import { useFormState } from "react-dom";
 
