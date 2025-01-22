@@ -1,8 +1,7 @@
 "use client";
-
-import { sellCarAction } from "@/actions/index";
 import React from "react";
 import { useFormState } from "react-dom";
+import { sellCarAction } from "../actions";
 
 export default function Page() {
   const inState:any = {
