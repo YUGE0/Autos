@@ -39,7 +39,7 @@ export default async function Page({params}: Props) {
   return (
     <div className="">
       <div className="p-10 flex justify-between items-center">
-        <Image className="relative w-10 sm:w-20" width={100} height={0} alt={product.cname} style={{objectFit: "cover"}} src={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${product.logo}`}/>
+        <Image className="relative w-10 sm:w-20" width={100} height={0} alt={product.cname} style={{objectFit: "cover"}} src={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/autos/${product.logo}`}/>
         <h1 className="text-4xl sm:text-5xl font-medium uppercase">{product.cname}</h1>
       </div>
       <div className=" bg-cover bg-no-repeat bg-clip-text bg-fixed bg-center" style={{backgroundImage: `url(${bgurl})`}}>
@@ -48,8 +48,8 @@ export default async function Page({params}: Props) {
       <div className="p-1 sm:p-0">
         <h1 className="xl:ml-44 md:ml-16 py-1 text-3xl sm:text-5xl font-bold">EXTERIOR</h1>
         <div className="flex flex-wrap w-full justify-center">
-          <Image className="w-fit" style={{objectFit:"cover"}} width={700} height={0} alt={product.model} src={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${product.imgf}`}/>
-          <Image className="w-fit" style={{objectFit:"cover"}} width={700} height={0} alt={product.model} src={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${product.imgb}`}/>
+          <Image className="w-fit" style={{objectFit:"cover"}} width={700} height={0} alt={product.model} src={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/autos/${product.imgf}`}/>
+          <Image className="w-fit" style={{objectFit:"cover"}} width={700} height={0} alt={product.model} src={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/autos/${product.imgb}`}/>
         </div>
         <div className="py-10 flex flex-wrap sm:flex-nowrap justify-around">
           <div className="p-5 rounded-lg shadow-Tcolor"><h1 className="font-semibold text-sm md:text-xl">Top speed</h1> <h1 className="xl:text-[10rem] md:text-8xl text-6xl font-medium">{product.speed}</h1></div>
@@ -58,8 +58,8 @@ export default async function Page({params}: Props) {
         </div>
         <h1 className="xl:mr-44 md:mr-16 py-1 text-3xl sm:text-5xl font-bold text-right">INTERIOR</h1>
         <div className="flex flex-wrap w-full justify-center">
-          <Image className="w-fit" width={700} height={0} alt={product.model} style={{objectFit: "cover"}} src={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${product.imginb}`}/>
-          <Image className="w-fit" width={700} height={0} alt={product.model} style={{objectFit: "cover"}} src={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${product.imginf}`}/>
+          <Image className="w-fit" width={700} height={0} alt={product.model} style={{objectFit: "cover"}} src={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/autos/${product.imginb}`}/>
+          <Image className="w-fit" width={700} height={0} alt={product.model} style={{objectFit: "cover"}} src={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/autos/${product.imginf}`}/>
         </div>
         <div className="p-10 sm:p-20 md:p-40  w-full space-y-12">
           <div className="p-2"><h1 className="pr-10 text-5xl font-semibold">OVERVIEW</h1><h1 className="mt-10 text-xl text-balance">{product.overview}</h1></div>
@@ -74,7 +74,7 @@ export default async function Page({params}: Props) {
             :null}
         </div>
         <div className="p-1 sm:p-10">
-        {product.sound && <SoudPlayer so={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${product.sound}`}/>}
+        {product.sound && <SoudPlayer so={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/autos/${product.sound}`}/>}
         </div>
         <div className="bg-cover bg-no-repeat bg-fixed bg-center " style={{backgroundImage: `url(${bgurl})`}}>
           <h1 className="font-black text-center h-[40rem] text-[8rem] md:text-[10rem] lg:text-[12rem] text-transparent uppercase">{product.model}</h1>

@@ -47,13 +47,13 @@ export default async function Home() {
           <p className="text-xl">This are the top sellers</p>
         </div>
         <div className="flex flex-wrap justify-around gap-8">  
-          {topproduct && topproduct.map((pro) => (<Card key={`${pro.id}`} {...pro} url={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${pro.url}`}/>))} 
+          {topproduct && topproduct.map((pro) => (<Card key={`${pro.id}`} {...pro} url={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/autos/${pro.url}`}/>))} 
         </div>
       </div>
       <div className="mt-10">
           <h1 className="uppercase text-4xl font-semibold">All Products</h1>
         <div className="flex flex-wrap gap-12 mt-10 justify-center"> 
-          {product.map((pro) => (<Card key={`${pro.id}`} {...pro} url={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${pro.url}`}/>))} 
+          {product.map((pro) => (<Card key={`${pro.id}`} {...pro} url={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/autos/${pro.url}`}/>))} 
         </div>
       </div>
       

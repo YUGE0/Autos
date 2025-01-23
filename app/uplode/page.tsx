@@ -21,7 +21,7 @@ export default function Page() {
         </div>
         <div className="grid grid-cols-2">
             <label className="">Image:</label>
-            <input className="p-1 border-black border-b-2" type="file" name="Image" required/>
+            <input className="p-1 border-black border-b-2" type="file" name="ImageURL" required/>
         </div>
         <div className="grid grid-cols-2">
             <label className="">Brand Name:</label>
