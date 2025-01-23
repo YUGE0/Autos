@@ -12,8 +12,8 @@ export default function Page() {
   const [state, formAction] = useFormState(sellCarAction, inState);
 
   return (
-    <div className="p-20 flex justify-center text-2xl font-semibold">
-      <form className="grid rounded-2xl border-2 border-black p-10 w-1/2" action={formAction}>
+    <div className="p-2 flex justify-center text-2xl font-semibold">
+      <form className="w-full grid rounded-2xl border-2 border-black p-2 md:w-1/2" action={formAction}>
       <h1>Add your car details here:</h1>
         <div className="py-5 w-full flex justify-center">
           {state?.type==="error" && <p>{state.message}</p>}
