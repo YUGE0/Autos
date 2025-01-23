@@ -1,15 +1,16 @@
 "use client";
 import React from "react";
-import { useFormState } from "react-dom";
+import { useFormState, useFormStatus } from "react-dom";
 import { sellCarAction } from "../actions";
+import SubmitButton from "../components/submitbutton";
 
 export default function Page() {
   const inState:any = {
     message: "",
     error: null,
   };
-
   const [state, formAction] = useFormState(sellCarAction, inState);
+  const {pending} = useFormStatus();
 
   return (
     <div className="p-2 flex justify-center text-2xl font-semibold">
@@ -39,7 +40,7 @@ export default function Page() {
             <label className="">Price:</label>
             <input className="p-1 border-black border-b-2" type="text" name="Price" placeholder={"Price"} required/>
         </div>
-        <button className="mt-5 p-2 px-10 rounded-xl bg-black text-white" type="submit">Sell Car</button>
+        <SubmitButton/>
       </form>
     </div>
   );

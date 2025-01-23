@@ -2,6 +2,8 @@
 import { cookies } from "next/headers";
 import {createServerActionClient} from '@supabase/auth-helpers-nextjs'
 import { z } from "zod";
+import { revalidatePath } from "next/cache";
+import { redirect } from "next/navigation";
 
 export async function sellCarAction(prevState: FormData, formData: FormData) {
   //console.log({ formData });
@@ -73,6 +75,8 @@ export async function sellCarAction(prevState: FormData, formData: FormData) {
     };
   }
   
+  revalidatePath("/")
+  redirect("/")
 
   return {
   type: "success",
