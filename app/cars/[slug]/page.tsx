@@ -4,11 +4,39 @@ import Image from 'next/image';
 import React from 'react';
 import Features from './features';
 import SoudPlayer from './soud';
+import { Metadata, ResolvingMetadata } from 'next';
+import { getCanonicalUrl } from '@/utils';
 
 export const revalidate = 0;
 
 type Props = {
   params: {slug: string},
+}
+
+export async function generateMetadata(
+  { params}: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  // read route params
+  const id = params.slug
+  // fetch data
+  const supabase = createClient();
+  const { data:product } = await supabase.from("autos").select().match({id}).single()
+
+  if(!product){return{title:"",description:""}}
+    
+  // optionally access and extend (rather than replace) parent metadata
+  const previousImages = (await parent).openGraph?.images || []
+  return {
+    title: product.name,
+    description:product.description,
+    openGraph: {
+      images: [`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/autos/${product.imgs}`],
+    },
+    alternates:{
+      canonical: `${getCanonicalUrl}/autos/${id}`
+    }
+  }
 }
 
 export async function generateStaticParams() {
