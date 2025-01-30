@@ -1,5 +1,4 @@
 import { createClient } from '@/supabase/client';
-import { url } from 'inspector';
 import Image from 'next/image';
 import React from 'react';
 import Features from './features';
@@ -21,7 +20,7 @@ export async function generateMetadata(
   const id = params.slug
   // fetch data
   const supabase = createClient();
-  const { data:product } = await supabase.from("autos").select().match({id}).single()
+  const { data:product } = await supabase.from("autos").select().eq("id", params.slug).single()
 
   if(!product){return{title:"",description:""}}
     
@@ -43,6 +42,8 @@ export async function generateStaticParams() {
 
   const supabase = createClient();
   const { data:product } = await supabase.from("autos").select()
+  //console.log({product});
+  
 
   if(!product){return[]}
     
@@ -62,7 +63,7 @@ export default async function Page({params}: Props) {
   const { data:con } = await supabase.from("con").select().match({model: product.model}).single()
   //console.log(aero);
   
-  const bgurl =`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${product.imgs}`;
+  const bgurl =`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/autos/${product.imgs}`;
 
   return (
     <div className="">
@@ -93,12 +94,12 @@ export default async function Page({params}: Props) {
           <div className="p-2"><h1 className="pr-10 text-5xl font-semibold">OVERVIEW</h1><h1 className="mt-10 text-xl text-balance">{product.overview}</h1></div>
           {aero!==null && <h1 className="text-6xl font-semibold">FEATURES</h1>}
           {aero!==null? <Features key={aero.id} {...aero} {...per} {...con}
-            aeroimgo={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${aero.aeroimgo}`} 
-            aeroimgt={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${aero.aeroimgt}`} 
-            perimgo={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${per.perimgo}`} 
-            perimgt={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${per.perimgt}`}
-            conimgo={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${con.conimgo}`} 
-            conimgt={`${process.env.SUPABASE_URL}/storage/v1/object/public/autos/${con.conimgt}`}/>
+            aeroimgo={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/autos/${aero.aeroimgo}`} 
+            aeroimgt={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/autos/${aero.aeroimgt}`} 
+            perimgo={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/autos/${per.perimgo}`} 
+            perimgt={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/autos/${per.perimgt}`}
+            conimgo={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/autos/${con.conimgo}`} 
+            conimgt={`${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/autos/${con.conimgt}`}/>
             :null}
         </div>
         <div className="p-1 sm:p-10">
